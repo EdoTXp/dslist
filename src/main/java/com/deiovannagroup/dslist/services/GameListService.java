@@ -2,7 +2,6 @@ package com.deiovannagroup.dslist.services;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,17 +14,18 @@ import com.deiovannagroup.dslist.repositories.GameRepository;
 @Service
 public class GameListService {
 
-    @Autowired
-    private GameListRepository gameListRepository;
+    private final GameListRepository gameListRepository;
+    private final GameRepository gameRepository;
 
-    @Autowired
-    private GameRepository gameRepository;
+    public GameListService(GameListRepository gameListRepository, GameRepository gameRepository) {
+        this.gameListRepository = gameListRepository;
+        this.gameRepository = gameRepository;
+    }
 
     @Transactional(readOnly = true)
     public List<GameListDTO> findAll() {
         List<GameList> result = gameListRepository.findAll();
-        List<GameListDTO> dto = result.stream().map(x -> new GameListDTO(x)).toList();
-        return dto;
+        return result.stream().map(GameListDTO::new).toList();
     }
 
     @Transactional

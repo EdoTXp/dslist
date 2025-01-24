@@ -34,17 +34,77 @@ public class Game {
 
     }
 
-    public Game(Long id, String title, Integer year, String genre, String platforms, Double score, String imgUrl,
-            String shortDescription, String longDescription) {
-        this.id = id;
-        this.title = title;
-        this.year = year;
-        this.genre = genre;
-        this.platforms = platforms;
-        this.score = score;
-        this.imgUrl = imgUrl;
-        this.shortDescription = shortDescription;
-        this.longDescription = longDescription;
+    private Game(Builder builder) {
+        this.id = builder.id;
+        this.title = builder.title;
+        this.year = builder.year;
+        this.genre = builder.genre;
+        this.platforms = builder.platforms;
+        this.score = builder.score;
+        this.imgUrl = builder.imgUrl;
+        this.shortDescription = builder.shortDescription;
+        this.longDescription = builder.longDescription;
+    }
+
+    public static class Builder {
+        private Long id;
+        private String title;
+        private Integer year;
+        private String genre;
+        private String platforms;
+        private Double score;
+        private String imgUrl;
+        private String shortDescription;
+        private String longDescription;
+
+        public Builder id(Long id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder title(String title) {
+            this.title = title;
+            return this;
+        }
+
+        public Builder year(Integer year) {
+            this.year = year;
+            return this;
+        }
+
+        public Builder genre(String genre) {
+            this.genre = genre;
+            return this;
+        }
+
+        public Builder platforms(String platforms) {
+            this.platforms = platforms;
+            return this;
+        }
+
+        public Builder score(Double score) {
+            this.score = score;
+            return this;
+        }
+
+        public Builder imgUrl(String imgUrl) {
+            this.imgUrl = imgUrl;
+            return this;
+        }
+
+        public Builder shortDescription(String shortDescription) {
+            this.shortDescription = shortDescription;
+            return this;
+        }
+
+        public Builder longDescription(String longDescription) {
+            this.longDescription = longDescription;
+            return this;
+        }
+
+        public Game build() {
+            return new Game(this);
+        }
     }
 
     public Long getId() {
