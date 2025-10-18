@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.deiovannagroup.dslist.dto.GameDTO;
 import com.deiovannagroup.dslist.dto.GameMinDTO;
 import com.deiovannagroup.dslist.services.GameService;
+
+import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -22,7 +24,7 @@ public class GameController {
     }
 
     @GetMapping(value = "/{id}")
-    public GameDTO findById(@PathVariable Long id) {
+    public GameDTO findById(@NonNull @PathVariable Long id) {
         return gameService.findByid(id);
     }
 

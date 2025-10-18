@@ -1,6 +1,7 @@
 package com.deiovannagroup.dslist.dto;
 
 import org.springframework.beans.BeanUtils;
+import org.springframework.lang.NonNull;
 
 import com.deiovannagroup.dslist.entities.Game;
 
@@ -17,7 +18,7 @@ public class GameDTO {
 
     }
 
-    public GameDTO(Game entity) {
+    public GameDTO(@NonNull Game entity) {
         BeanUtils.copyProperties(entity, this);
     }
 

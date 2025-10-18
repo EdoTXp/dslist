@@ -2,12 +2,14 @@ package com.deiovannagroup.dslist.services;
 
 import java.util.List;
 
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.deiovannagroup.dslist.dto.GameDTO;
 import com.deiovannagroup.dslist.dto.GameMinDTO;
 import com.deiovannagroup.dslist.entities.Game;
+import com.deiovannagroup.dslist.errors.GameNotFoundException;
 import com.deiovannagroup.dslist.projections.GameMinProjection;
 import com.deiovannagroup.dslist.repositories.GameRepository;
 
@@ -21,9 +23,10 @@ public class GameService {
     }
 
     @Transactional(readOnly = true)
-    public GameDTO findByid(Long id) {
-        Game result = gameRepository.findById(id).orElseThrow(() -> new RuntimeException("Game not found"));
-        return new GameDTO(result);
+    public GameDTO findByid(@NonNull Long id) {
+        return gameRepository.findById(id)
+                .map(GameDTO::new)
+                .orElseThrow(() -> new GameNotFoundException("Game not found with id: " + id));
     }
 
     @Transactional(readOnly = true)

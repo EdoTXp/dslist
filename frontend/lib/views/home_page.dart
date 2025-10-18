@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  void _reorderList(oldIndex, newIndex) async {
+  void _reorderList(int oldIndex, int newIndex) async {
     newIndex = newIndex > oldIndex ? newIndex - 1 : newIndex;
 
     await controller.replacementGameOnList(

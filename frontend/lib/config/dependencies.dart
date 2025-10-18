@@ -8,7 +8,7 @@ import 'package:frontend/repositories/game_repository.dart';
 
 final injector = AutoInjector();
 
-setupDependencies() {
+void setupDependencies() {
   injector.addSingleton<Api>(
     () => GameApi(baseUrl: 'http://localhost:8080'),
   );
