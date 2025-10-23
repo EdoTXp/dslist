@@ -86,5 +86,5 @@ For more detailed instructions on setting up the Flutter environment and running
 
 ## 🙏 - Credits & Acknowledgements
 
-* **Nélio Alves (DevSuperior):** For the excellent course and the backend project that formed the basis of this work.
+* **Nélio Alves (DevSuperior):** For the excellent course and the backend project that formed the basis of this work https://github.com/devsuperior/dslist-backend.
 * **Edoardo Fabrizio De Iovanna:** For developing and integrating the Flutter frontend.
